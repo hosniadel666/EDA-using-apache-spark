@@ -1,0 +1,2940 @@
+﻿{
+  "paragraphs": [
+    {
+      "text": "%md\n# Exploratory Data Analysis on FIFA 21 Dataset",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-13T01:41:48-0700",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h1>Exploratory Data Analysis on FIFA 21 Dataset</h1>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1686644977756_95925827",
+      "id": "paragraph_1665474745602_1604506257",
+      "dateCreated": "2023-06-13T01:29:37-0700",
+      "dateStarted": "2023-06-13T01:41:48-0700",
+      "dateFinished": "2023-06-13T01:41:48-0700",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:9959"
+    },
+    {
+      "text": "import org.apache.spark.sql._\nimport org.apache.spark.sql.functions._\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-13T01:42:15-0700",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "editorHide": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "import org.apache.spark.sql._\nimport org.apache.spark.sql.functions._\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1686644977756_246331405",
+      "id": "paragraph_1665474843615_1756629599",
+      "dateCreated": "2023-06-13T01:29:37-0700",
+      "dateStarted": "2023-06-13T01:42:15-0700",
+      "dateFinished": "2023-06-13T01:42:15-0700",
+      "status": "FINISHED",
+      "$$hashKey": "object:9960"
+    },
+    {
+      "text": "val spark = SparkSession\n  .builder\n  .appName(\"EDA_Using_Spark\")\n  .master(\"local[*]\")\n  .getOrCreate()",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-13T01:42:42-0700",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "editorHide": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mspark\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.SparkSession\u001b[0m = org.apache.spark.sql.SparkSession@505dfb57\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1686644977756_1376366318",
+      "id": "paragraph_1665476929811_1491026378",
+      "dateCreated": "2023-06-13T01:29:37-0700",
+      "dateStarted": "2023-06-13T01:42:42-0700",
+      "dateFinished": "2023-06-13T01:42:42-0700",
+      "status": "FINISHED",
+      "$$hashKey": "object:9961"
+    },
+    {
+      "text": "import spark.implicits._\nval df = spark.read\n  .option(\"header\", \"true\")\n  .option(\"inferSchema\", \"true\")\n  .csv(\"/home/hosniadel/IdeaProjects/EDA-Using-Spark/data/fifa_dataset/players_21.csv\")\n  .select(\"sofifa_id\", \"short_name\", \"age\", \"height_cm\",\n                \"weight_kg\", \"nationality\",\n                \"club_name\", \"league_name\", \"league_rank\",\n                \"overall\", \"value_eur\", \"player_positions\",\n                \"preferred_foot\", \"international_reputation\", \"loaned_from\",\n                \"passing\", \"shooting\", \"dribbling\",\n                \"defending\", \"physic\", \"skill_ball_control\")\n                \ndf.printSchema()\ndf.createOrReplaceTempView(\"fifa\")\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-13T02:28:48-0700",
+      "progress": 100,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "editorHide": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-----------------+--------------------+--------------------+\n|       short_name|           club_name|         loaned_from|\n+-----------------+--------------------+--------------------+\n|          G. Bale|   Tottenham Hotspur|         Real Madrid|\n|        A. Areola|              Fulham| Paris Saint-Germain|\n|      M. Politano|              Napoli|               Inter|\n|         Angeliño|          RB Leipzig|     Manchester City|\n|    Dani Ceballos|             Arsenal|         Real Madrid|\n|  Ricardo Goulart|Hebei China Fortu...|Guangzhou Evergra...|\n|         C. Pavón|           LA Galaxy|        Boca Juniors|\n|        V. Lazaro|Borussia Möncheng...|               Inter|\n|        A. Lafont|           FC Nantes|          Fiorentina|\n|       Rony Lopes|            OGC Nice|          Sevilla FC|\n|       M. Caldara|            Atalanta|               Milan|\n|     M. Batshuayi|      Crystal Palace|             Chelsea|\n|    D. Zappacosta|               Genoa|             Chelsea|\n|             Jony|          CA Osasuna|               Lazio|\n|       A. Sørloth|         Trabzonspor|      Crystal Palace|\n|         L. Olaza|            RC Celta|        Boca Juniors|\n|       J. Murillo|            RC Celta|           Sampdoria|\n|Gonçalo Paciência|       FC Schalke 04| Eintracht Frankfurt|\n|         S. Duffy|              Celtic|Brighton & Hove A...|\n|       F. Lejeune|    Deportivo Alavés|    Newcastle United|\n+-----------------+--------------------+--------------------+\nonly showing top 20 rows\n\nroot\n |-- sofifa_id: integer (nullable = true)\n |-- short_name: string (nullable = true)\n |-- age: integer (nullable = true)\n |-- height_cm: integer (nullable = true)\n |-- weight_kg: integer (nullable = true)\n |-- nationality: string (nullable = true)\n |-- club_name: string (nullable = true)\n |-- league_name: string (nullable = true)\n |-- league_rank: integer (nullable = true)\n |-- overall: integer (nullable = true)\n |-- value_eur: integer (nullable = true)\n |-- player_positions: string (nullable = true)\n |-- preferred_foot: string (nullable = true)\n |-- international_reputation: integer (nullable = true)\n |-- loaned_from: string (nullable = true)\n |-- passing: integer (nullable = true)\n |-- shooting: integer (nullable = true)\n |-- dribbling: integer (nullable = true)\n |-- defending: integer (nullable = true)\n |-- physic: integer (nullable = true)\n |-- skill_ball_control: integer (nullable = true)\n\nimport spark.implicits._\n\u001b[1m\u001b[34mdf\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [sofifa_id: int, short_name: string ... 19 more fields]\ndf: org.apache.spark.sql.DataFrame = [sofifa_id: int, short_name: string ... 19 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.206.129:4040/jobs/job?id=37",
+              "$$hashKey": "object:11164"
+            },
+            {
+              "jobUrl": "http://192.168.206.129:4040/jobs/job?id=38",
+              "$$hashKey": "object:11165"
+            },
+            {
+              "jobUrl": "http://192.168.206.129:4040/jobs/job?id=39",
+              "$$hashKey": "object:11166"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1686644977756_327015962",
+      "id": "paragraph_1665476939522_1416462781",
+      "dateCreated": "2023-06-13T01:29:37-0700",
+      "dateStarted": "2023-06-13T01:55:04-0700",
+      "dateFinished": "2023-06-13T01:55:06-0700",
+      "status": "FINISHED",
+      "$$hashKey": "object:9962"
+    },
+    {
+      "text": "%spark\nval query_1 = df.dropDuplicates(\"short_name\", \"nationality\")\n            .select(\"nationality\")\n            .groupBy(\"nationality\")\n            .agg(count(\"nationality\").as(\"players count\"))\n            .orderBy(desc(\"players count\"))\nquery_1.show()\nquery_1.createOrReplaceTempView(\"query_1\")",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-13T03:04:07-0700",
+      "progress": 78,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "scatterChart",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {
+                    "columns": [
+                      {
+                        "name": "nationality0",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "count1",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      }
+                    ],
+                    "scrollFocus": {},
+                    "selection": [],
+                    "grouping": {
+                      "grouping": [],
+                      "aggregations": [],
+                      "rowExpandedStates": {}
+                    },
+                    "treeView": {},
+                    "pagination": {
+                      "paginationCurrentPage": 1,
+                      "paginationPageSize": 250
+                    }
+                  },
+                  "tableColumnTypeState": {
+                    "names": {
+                      "nationality": "string",
+                      "count": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "lineChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "nationality",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "count",
+                  "index": 1,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-------------------+-------------+\n|        nationality|players count|\n+-------------------+-------------+\n|            England|         1618|\n|            Germany|         1181|\n|              Spain|         1030|\n|             France|          969|\n|          Argentina|          898|\n|             Brazil|          828|\n|              Japan|          466|\n|        Netherlands|          431|\n|              Italy|          418|\n|      United States|          375|\n|             Sweden|          362|\n|           China PR|          358|\n|             Norway|          357|\n|             Poland|          355|\n|           Portugal|          343|\n|             Turkey|          337|\n|     Korea Republic|          335|\n|             Mexico|          335|\n|            Uruguay|          334|\n|Republic of Ireland|          330|\n+-------------------+-------------+\nonly showing top 20 rows\n\n\u001b[1m\u001b[34mquery_1\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[org.apache.spark.sql.Row]\u001b[0m = [nationality: string, players count: bigint]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.206.129:4040/jobs/job?id=53",
+              "$$hashKey": "object:11232"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1686644977757_1903869381",
+      "id": "paragraph_1665479118496_1679409228",
+      "dateCreated": "2023-06-13T01:29:37-0700",
+      "dateStarted": "2023-06-13T03:04:07-0700",
+      "dateFinished": "2023-06-13T03:04:10-0700",
+      "status": "ABORT",
+      "$$hashKey": "object:9963"
+    },
+    {
+      "text": "%sql\nSELECT SUM(`players count`) AS `Total number of players in fifa 21` FROM query_1;",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-13T03:05:13-0700",
+      "progress": 48,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "Total number of players in fifa 21": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "Total number of players in fifa 21\n18454\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.206.129:4040/jobs/job?id=56",
+              "$$hashKey": "object:11330"
+            },
+            {
+              "jobUrl": "http://192.168.206.129:4040/jobs/job?id=57",
+              "$$hashKey": "object:11331"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1686650170768_1940337030",
+      "id": "paragraph_1686650170768_1940337030",
+      "dateCreated": "2023-06-13T02:56:10-0700",
+      "dateStarted": "2023-06-13T03:05:10-0700",
+      "dateFinished": "2023-06-13T03:05:12-0700",
+      "status": "FINISHED",
+      "$$hashKey": "object:9964"
+    },
+    {
+      "text": "%sql\nSELECT * FROM query_1;",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-13T04:14:26-0700",
+      "progress": 34,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 220.6,
+              "optionOpen": true,
+              "setting": {
+                "table": {
+                  "tableGridState": {
+                    "columns": [
+                      {
+                        "name": "nationality0",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "players count1",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      }
+                    ],
+                    "scrollFocus": {},
+                    "selection": [],
+                    "grouping": {
+                      "grouping": [],
+                      "aggregations": [],
+                      "rowExpandedStates": {}
+                    },
+                    "treeView": {},
+                    "pagination": {
+                      "paginationCurrentPage": 1,
+                      "paginationPageSize": 250
+                    }
+                  },
+                  "tableColumnTypeState": {
+                    "updated": false,
+                    "names": {
+                      "nationality": "string",
+                      "players count": "string"
+                    }
+                  },
+                  "updated": false,
+                  "initialized": false,
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  }
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default",
+                  "style": "stack"
+                },
+                "lineChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "pieChart": {}
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "nationality",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "players count",
+                  "index": 1,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          },
+          "1": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "nationality": "string",
+                      "players count": "string"
+                    },
+                    "updated": true
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "nationality\tplayers count\nEngland\t1618\nGermany\t1181\nSpain\t1030\nFrance\t969\nArgentina\t898\nBrazil\t828\nJapan\t466\nNetherlands\t431\nItaly\t418\nUnited States\t375\nSweden\t362\nChina PR\t358\nNorway\t357\nPoland\t355\nPortugal\t343\nTurkey\t337\nMexico\t335\nKorea Republic\t335\nUruguay\t334\nRepublic of Ireland\t330\nAustria\t321\nRomania\t316\nColombia\t314\nSaudi Arabia\t304\nBelgium\t298\nDenmark\t288\nScotland\t283\nEcuador\t241\nAustralia\t240\nParaguay\t224\nSwitzerland\t209\nChile\t188\nVenezuela\t187\nPeru\t160\nBolivia\t141\nCroatia\t131\nSerbia\t128\nNigeria\t126\nSenegal\t124\nWales\t123\nGhana\t116\nCzech Republic\t110\nIvory Coast\t103\nGreece\t102\nMorocco\t80\nNorthern Ireland\t79\nCanada\t78\nCameroon\t77\nRussia\t76\nSouth Africa\t72\nSlovakia\t68\nBosnia Herzegovina\t66\nUkraine\t65\nDR Congo\t65\nFinland\t64\nIceland\t54\nSlovenia\t52\nAlgeria\t52\nAlbania\t49\nMali\t48\nKosovo\t46\nNew Zealand\t44\nBulgaria\t38\nHungary\t38\nTunisia\t33\nMontenegro\t30\nCosta Rica\t29\nEgypt\t29\nGuinea\t27\nNorth Macedonia\t26\nJamaica\t24\nIndia\t23\nGambia\t23\nCape Verde\t23\nGeorgia\t22\nUnited Arab Emirates\t22\nBurkina Faso\t19\nIsrael\t19\nAngola\t16\nHonduras\t16\nGabon\t16\nCongo\t16\nIran\t15\nGuinea Bissau\t15\nTogo\t14\nCuracao\t13\nMoldova\t12\nComoros\t12\nPanama\t11\nZimbabwe\t11\nBenin\t11\nZambia\t11\nLuxembourg\t11\nKenya\t10\nLithuania\t10\nHaiti\t10\nGuyana\t10\nUganda\t9\nMadagascar\t9\nSierra Leone\t9\nLatvia\t7\nMauritania\t7\nBurundi\t7\nUzbekistan\t7\nTrinidad & Tobago\t6\nAzerbaijan\t6\nKazakhstan\t6\nCyprus\t6\nEquatorial Guinea\t6\nCuba\t5\nLiechtenstein\t5\nEstonia\t5\nFaroe Islands\t5\nMozambique\t5\nIraq\t4\nGrenada\t4\nDominican Republic\t4\nNiger\t4\nThailand\t4\nAntigua & Barbuda\t4\nSudan\t4\nArmenia\t4\nLiberia\t4\nLibya\t4\nSyria\t4\nCentral African Republic\t4\nEl Salvador\t4\nNamibia\t3\nLebanon\t3\nBelarus\t3\nMontserrat\t3\nPhilippines\t3\nAfghanistan\t2\nChinese Taipei\t2\nJordan\t2\nHong Kong\t2\nEritrea\t2\nSouth Sudan\t2\nBelize\t2\nSaint Kitts and Nevis\t2\nEthiopia\t2\nPalestine\t2\nChad\t1\nMalaysia\t1\nNew Caledonia\t1\nMalawi\t1\nMacau\t1\nSaint Lucia\t1\nNicaragua\t1\nRwanda\t1\nKorea DPR\t1\nMalta\t1\nPuerto Rico\t1\nAndorra\t1\nBarbados\t1\nTanzania\t1\nBermuda\t1\nAruba\t1\nIndonesia\t1\nGuam\t1\nPapua New Guinea\t1\nSão Tomé & Príncipe\t1\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.206.129:4040/jobs/job?id=65",
+              "$$hashKey": "object:11433"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1686644977757_683147771",
+      "id": "paragraph_1665477071141_1609394693",
+      "dateCreated": "2023-06-13T01:29:37-0700",
+      "dateStarted": "2023-06-13T04:14:26-0700",
+      "dateFinished": "2023-06-13T04:14:27-0700",
+      "status": "FINISHED",
+      "$$hashKey": "object:9965"
+    },
+    {
+      "text": "%md\n## Second Query",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-13T01:29:37-0700",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h2>Second Query</h2>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1686644977757_863284142",
+      "id": "paragraph_1665481368612_1895398099",
+      "dateCreated": "2023-06-13T01:29:37-0700",
+      "status": "READY",
+      "$$hashKey": "object:9966"
+    },
+    {
+      "text": "val query_2 = df.dropDuplicates(\"short_name\")\n            .select(\"age\")\n            .groupBy(\"age\")\n            .agg(count(\"age\").as(\"players count\"))\n            .orderBy(desc(\"players count\"))\nquery_2.show()\nquery_2.createOrReplaceTempView(\"query_2\")",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-13T04:17:11-0700",
+      "progress": 74,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---+-------------+\n|age|players count|\n+---+-------------+\n| 23|         1390|\n| 22|         1362|\n| 24|         1348|\n| 20|         1329|\n| 21|         1277|\n| 28|         1218|\n| 26|         1214|\n| 25|         1188|\n| 27|         1155|\n| 29|         1001|\n| 19|          946|\n| 30|          893|\n| 31|          735|\n| 18|          616|\n| 32|          593|\n| 33|          453|\n| 34|          346|\n| 17|          253|\n| 35|          208|\n| 36|          152|\n+---+-------------+\nonly showing top 20 rows\n\n\u001b[1m\u001b[34mquery_2\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[org.apache.spark.sql.Row]\u001b[0m = [age: int, players count: bigint]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.206.129:4040/jobs/job?id=66",
+              "$$hashKey": "object:11537"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1686644977758_1239805524",
+      "id": "paragraph_1665477102680_769547883",
+      "dateCreated": "2023-06-13T01:29:37-0700",
+      "dateStarted": "2023-06-13T04:17:11-0700",
+      "dateFinished": "2023-06-13T04:17:13-0700",
+      "status": "ABORT",
+      "$$hashKey": "object:9967"
+    },
+    {
+      "text": "%sql\nSELECT * FROM query_2;",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-13T04:19:21-0700",
+      "progress": 69,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "age": "string",
+                      "players count": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "age",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "players count",
+                  "index": 1,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "age\tplayers count\n23\t1390\n22\t1362\n24\t1348\n20\t1329\n21\t1277\n28\t1218\n26\t1214\n25\t1188\n27\t1155\n29\t1001\n19\t946\n30\t893\n31\t735\n18\t616\n32\t593\n33\t453\n34\t346\n17\t253\n35\t208\n36\t152\n37\t75\n38\t53\n16\t28\n39\t25\n40\t12\n41\t7\n42\t4\n43\t2\n53\t1\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.206.129:4040/jobs/job?id=68",
+              "$$hashKey": "object:11635"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1686644977758_615358474",
+      "id": "paragraph_1665481309504_1405512271",
+      "dateCreated": "2023-06-13T01:29:37-0700",
+      "dateStarted": "2023-06-13T04:18:26-0700",
+      "dateFinished": "2023-06-13T04:18:27-0700",
+      "status": "FINISHED",
+      "$$hashKey": "object:9968"
+    },
+    {
+      "text": "%sql\n-- Get the oldest and youngest players\nSELECT MAX(age) AS `Maximum player age`, MIN(age) AS `Minimum player age` FROM query_2;",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-14T02:54:09-0700",
+      "progress": 46,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "Maximum player age": "string",
+                      "Minimum player age": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "Maximum player age",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "Minimum player age",
+                  "index": 1,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "Maximum player age\tMinimum player age\n53\t16\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.206.129:4040/jobs/job?id=69",
+              "$$hashKey": "object:11733"
+            },
+            {
+              "jobUrl": "http://192.168.206.129:4040/jobs/job?id=70",
+              "$$hashKey": "object:11734"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1686655124102_128430133",
+      "id": "paragraph_1686655124102_128430133",
+      "dateCreated": "2023-06-13T04:18:44-0700",
+      "dateStarted": "2023-06-13T04:20:16-0700",
+      "dateFinished": "2023-06-13T04:20:18-0700",
+      "status": "FINISHED",
+      "$$hashKey": "object:9969"
+    },
+    {
+      "text": "%sql\n-- Get info about the oldest player\nSELECT * FROM fifa WHERE age IN (SELECT MAX(AGE) FROM queRy_2);",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-13T04:27:04-0700",
+      "progress": 52,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "sofifa_id": "string",
+                      "short_name": "string",
+                      "age": "string",
+                      "height_cm": "string",
+                      "weight_kg": "string",
+                      "nationality": "string",
+                      "club_name": "string",
+                      "league_name": "string",
+                      "league_rank": "string",
+                      "overall": "string",
+                      "value_eur": "string",
+                      "player_positions": "string",
+                      "preferred_foot": "string",
+                      "international_reputation": "string",
+                      "loaned_from": "string",
+                      "passing": "string",
+                      "shooting": "string",
+                      "dribbling": "string",
+                      "defending": "string",
+                      "physic": "string",
+                      "skill_ball_control": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "sofifa_id\tshort_name\tage\theight_cm\tweight_kg\tnationality\tclub_name\tleague_name\tleague_rank\toverall\tvalue_eur\tplayer_positions\tpreferred_foot\tinternational_reputation\tloaned_from\tpassing\tshooting\tdribbling\tdefending\tphysic\tskill_ball_control\n254704\tK. Miura\t53\t177\t72\tJapan\tYokohama FC\tJapanese J. League Division 1\t1\t59\t0\tST\tRight\t1\tnull\t55\t63\t60\t19\t47\t68\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.206.129:4040/jobs/job?id=74",
+              "$$hashKey": "object:11836"
+            },
+            {
+              "jobUrl": "http://192.168.206.129:4040/jobs/job?id=75",
+              "$$hashKey": "object:11837"
+            },
+            {
+              "jobUrl": "http://192.168.206.129:4040/jobs/job?id=76",
+              "$$hashKey": "object:11838"
+            },
+            {
+              "jobUrl": "http://192.168.206.129:4040/jobs/job?id=77",
+              "$$hashKey": "object:11839"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1686655330783_1892199982",
+      "id": "paragraph_1686655330783_1892199982",
+      "dateCreated": "2023-06-13T04:22:10-0700",
+      "dateStarted": "2023-06-13T04:25:23-0700",
+      "dateFinished": "2023-06-13T04:25:25-0700",
+      "status": "FINISHED",
+      "$$hashKey": "object:9970"
+    },
+    {
+      "text": "%sql\n-- Get info about the youngest players\nSELECT * FROM fifa WHERE age IN (SELECT MIN(AGE) FROM queRy_2);",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-14T02:54:10-0700",
+      "progress": 23,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "sofifa_id": "string",
+                      "short_name": "string",
+                      "age": "string",
+                      "height_cm": "string",
+                      "weight_kg": "string",
+                      "nationality": "string",
+                      "club_name": "string",
+                      "league_name": "string",
+                      "league_rank": "string",
+                      "overall": "string",
+                      "value_eur": "string",
+                      "player_positions": "string",
+                      "preferred_foot": "string",
+                      "international_reputation": "string",
+                      "loaned_from": "string",
+                      "passing": "string",
+                      "shooting": "string",
+                      "dribbling": "string",
+                      "defending": "string",
+                      "physic": "string",
+                      "skill_ball_control": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "sofifa_id\tshort_name\tage\theight_cm\tweight_kg\tnationality\tclub_name\tleague_name\tleague_rank\toverall\tvalue_eur\tplayer_positions\tpreferred_foot\tinternational_reputation\tloaned_from\tpassing\tshooting\tdribbling\tdefending\tphysic\tskill_ball_control\n251570\tR. Cherki\t16\t176\t71\tFrance\tOlympique Lyonnais\tFrench Ligue 1\t1\t67\t1700000\tCAM, RM, LM\tLeft\t1\tnull\t62\t60\t74\t20\t58\t73\n256970\tA. Karabec\t16\t185\t74\tCzech Republic\tSparta Praha\tCzech Republic Gambrinus Liga\t1\t67\t1500000\tCAM, CM, LM\tLeft\t1\tnull\t65\t60\t71\t35\t54\t70\n257042\tU. Bertelli\t16\t168\t62\tFrance\tOlympique de Marseille\tFrench Ligue 1\t1\t60\t400000\tCM\tRight\t1\tnull\t60\t50\t61\t53\t56\t65\n252255\tBarredo\t16\t177\t75\tSpain\tSD Ponferradina\tSpanish Segunda División\t2\t60\t275000\tGK\tRight\t1\tnull\tnull\tnull\tnull\tnull\tnull\t18\n247429\tD. Hoyo-Kowalski\t16\t189\t75\tPoland\tWisła Kraków\tPolish T-Mobile Ekstraklasa\t1\t59\t325000\tCB\tRight\t1\tnull\t34\t25\t36\t61\t66\t39\n257271\tL. Gourna-Douath\t16\t185\t70\tFrance\tAS Saint-Étienne\tFrench Ligue 1\t1\t59\t300000\tCM, CDM\tRight\t1\tnull\t57\t46\t63\t59\t58\t63\n256832\tO. Babuscu\t16\t176\t70\tAustria\tFC Admira Wacker Mödling\tAustrian Football Bundesliga\t1\t58\t275000\tCAM, CM, LM\tRight\t1\tnull\t58\t56\t65\t22\t46\t65\n258103\tM. Tanlongo\t16\t181\t63\tArgentina\tRosario Central\tArgentina Primera División\t1\t58\t250000\tRM\tRight\t1\tnull\t53\t53\t62\t33\t52\t61\n256306\tO. Beyaz\t16\t171\t62\tTurkey\tFenerbahçe SK\tTurkish Süper Lig\t1\t57\t230000\tCAM, CM\tLeft\t1\tnull\t61\t43\t58\t46\t37\t65\n257399\tW. Faghir\t16\t185\t80\tDenmark\tVejle Boldklub\tDanish Superliga\t1\t56\t200000\tST, RM\tRight\t1\tnull\t38\t58\t54\t21\t61\t54\n254503\tA. Descotte\t16\t179\t75\tBelgium\tSporting de Charleroi\tBelgian Jupiler Pro League\t1\t56\t200000\tRM\tRight\t1\tnull\t47\t50\t65\t28\t42\t61\n257353\tW. Bondo\t16\t177\t63\tFrance\tAS Nancy Lorraine\tFrench Ligue 2\t2\t55\t160000\tCDM\tRight\t1\tnull\t50\t36\t49\t54\t54\t51\n256898\tA. Pantea\t16\t172\t63\tRomania\tFCSB (Steaua)\tRomanian Liga I\t1\t55\t150000\tRB\tRight\t1\tnull\t49\t33\t50\t52\t52\t45\n257793\tR. Richards\t16\t178\t68\tEngland\tWest Bromwich Albion\tEnglish Premier League\t1\t54\t150000\tLM, CAM\tLeft\t1\tnull\t50\t45\t59\t26\t45\t58\n258522\tN. Abbey\t16\t187\t71\tEngland\tReading\tEnglish League Championship\t2\t54\t140000\tCB, LB\tLeft\t1\tnull\t41\t25\t45\t54\t56\t46\n257023\tP. Johansen\t16\t167\t60\tNorway\tSandefjord Fotball\tNorwegian Eliteserien\t1\t53\t130000\tCM\tRight\t1\tnull\t50\t40\t60\t46\t42\t59\n252897\tC. Ramsay\t16\t177\t68\tScotland\tAberdeen\tScottish Premiership\t1\t53\t110000\tRB\tRight\t1\tnull\t37\t27\t50\t51\t57\t46\n258311\tK. Trelowski\t16\t190\t77\tPoland\tRaków Częstochowa\tPolish T-Mobile Ekstraklasa\t1\t52\t90000\tGK\tRight\t1\tnull\tnull\tnull\tnull\tnull\tnull\t12\n255797\tR. Orihuela\t16\t175\t70\tBolivia\tClub Blooming\tLiga de Fútbol Profesional Boliviano\t1\t52\t100000\tCM\tRight\t1\tnull\t47\t44\t54\t44\t49\t60\n258693\tE. Mirus\t16\t186\t75\tPoland\tLechia Gdańsk\tPolish T-Mobile Ekstraklasa\t1\t52\t80000\tGK\tRight\t1\tnull\tnull\tnull\tnull\tnull\tnull\t11\n253753\tG. Popovic\t16\t188\t80\tAustralia\tPerth Glory\tAustralian Hyundai A-League\t1\t52\t100000\tST\tRight\t1\tnull\t37\t53\t51\t21\t62\t49\n247025\tT. Gulliksen\t16\t177\t60\tNorway\tStrømsgodset IF\tNorwegian Eliteserien\t1\t51\t80000\tCM\tRight\t1\tnull\t51\t39\t51\t42\t44\t50\n257090\tI. Doukouré\t16\t180\t70\tFrance\tValenciennes FC\tFrench Ligue 2\t2\t51\t80000\tCB\tRight\t1\tnull\t28\t25\t34\t53\t52\t30\n252750\tV. Covil\t16\t179\t68\tUnited States\tForest Green Rovers\tEnglish League Two\t4\t51\t70000\tST\tRight\t1\tnull\t35\t50\t54\t18\t46\t49\n257130\tA. Hoff\t16\t188\t78\tDenmark\tAC Horsens\tDanish Superliga\t1\t51\t60000\tGK\tRight\t1\tnull\tnull\tnull\tnull\tnull\tnull\t13\n256199\tA. Valencia\t16\t175\t61\tEcuador\tIndependiente del Valle\tEcuadorian Serie A\t1\t51\t70000\tCM\tRight\t1\tnull\t46\t40\t53\t44\t48\t51\n247962\tM. Williamsen\t16\t186\t71\tNorway\tKristiansund BK\tNorwegian Eliteserien\t1\t49\t60000\tCB\tRight\t1\tnull\t28\t24\t31\t49\t51\t32\n253403\tR. Borges Rodrigues\t16\t173\t67\tAustralia\tMelbourne City FC\tAustralian Hyundai A-League\t1\t49\t60000\tCAM, ST\tRight\t1\tnull\t44\t44\t53\t30\t45\t50\n255986\tP. McGarvey\t16\t180\t76\tRepublic of Ireland\tFinn Harps\tRep. Ireland Airtricity League\t1\t48\t30000\tGK\tRight\t1\tnull\tnull\tnull\tnull\tnull\tnull\t17\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.206.129:4040/jobs/job?id=78",
+              "$$hashKey": "object:11949"
+            },
+            {
+              "jobUrl": "http://192.168.206.129:4040/jobs/job?id=79",
+              "$$hashKey": "object:11950"
+            },
+            {
+              "jobUrl": "http://192.168.206.129:4040/jobs/job?id=80",
+              "$$hashKey": "object:11951"
+            },
+            {
+              "jobUrl": "http://192.168.206.129:4040/jobs/job?id=81",
+              "$$hashKey": "object:11952"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1686655710229_1479677864",
+      "id": "paragraph_1686655710229_1479677864",
+      "dateCreated": "2023-06-13T04:28:30-0700",
+      "dateStarted": "2023-06-13T04:29:03-0700",
+      "dateFinished": "2023-06-13T04:29:05-0700",
+      "status": "FINISHED",
+      "$$hashKey": "object:9971"
+    },
+    {
+      "text": "%sql\n-- Get info about the youngest and expensive player\nSELECT * FROM fifa WHERE age IN (SELECT MIN(AGE) FROM queRy_2) order by value_eur DESC LIMIT 1;",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-14T02:54:11-0700",
+      "progress": 76,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "sofifa_id": "string",
+                      "short_name": "string",
+                      "age": "string",
+                      "height_cm": "string",
+                      "weight_kg": "string",
+                      "nationality": "string",
+                      "club_name": "string",
+                      "league_name": "string",
+                      "league_rank": "string",
+                      "overall": "string",
+                      "value_eur": "string",
+                      "player_positions": "string",
+                      "preferred_foot": "string",
+                      "international_reputation": "string",
+                      "loaned_from": "string",
+                      "passing": "string",
+                      "shooting": "string",
+                      "dribbling": "string",
+                      "defending": "string",
+                      "physic": "string",
+                      "skill_ball_control": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "sofifa_id\tshort_name\tage\theight_cm\tweight_kg\tnationality\tclub_name\tleague_name\tleague_rank\toverall\tvalue_eur\tplayer_positions\tpreferred_foot\tinternational_reputation\tloaned_from\tpassing\tshooting\tdribbling\tdefending\tphysic\tskill_ball_control\n251570\tR. Cherki\t16\t176\t71\tFrance\tOlympique Lyonnais\tFrench Ligue 1\t1\t67\t1700000\tCAM, RM, LM\tLeft\t1\tnull\t62\t60\t74\t20\t58\t73\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.206.129:4040/jobs/job?id=82",
+              "$$hashKey": "object:12062"
+            },
+            {
+              "jobUrl": "http://192.168.206.129:4040/jobs/job?id=83",
+              "$$hashKey": "object:12063"
+            },
+            {
+              "jobUrl": "http://192.168.206.129:4040/jobs/job?id=84",
+              "$$hashKey": "object:12064"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1686655782029_1157339616",
+      "id": "paragraph_1686655782029_1157339616",
+      "dateCreated": "2023-06-13T04:29:42-0700",
+      "dateStarted": "2023-06-13T04:31:21-0700",
+      "dateFinished": "2023-06-13T04:31:23-0700",
+      "status": "FINISHED",
+      "$$hashKey": "object:9972"
+    },
+    {
+      "text": "\nval query_3 = df.select(\"*\")\n            .filter(col(\"club_name\").isNull)\n            .groupBy(\"nationality\")\n            .agg(count(\"short_name\").as(\"players count\"))\n            .orderBy(desc(\"players count\"))\n            \n        \n            \nquery_3.show()\n            \nquery_3.createOrReplaceTempView(\"query_3\")",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-13T04:50:43-0700",
+      "progress": 27,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "editorHide": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+------------+-------------+\n| nationality|players count|\n+------------+-------------+\n|       India|           23|\n|     Ecuador|           23|\n|     Uruguay|           23|\n|    Bulgaria|           19|\n|       Egypt|           18|\n|     Hungary|           13|\n|      Russia|           11|\n|South Africa|            9|\n|    Slovenia|            7|\n|     Bolivia|            7|\n| Ivory Coast|            7|\n| New Zealand|            6|\n|   Australia|            6|\n|     Iceland|            6|\n|     Finland|            5|\n|        Peru|            4|\n|      Canada|            3|\n|      Sweden|            3|\n|   Venezuela|            3|\n|    Paraguay|            3|\n+------------+-------------+\nonly showing top 20 rows\n\n\u001b[1m\u001b[34mquery_3\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[org.apache.spark.sql.Row]\u001b[0m = [nationality: string, players count: bigint]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.206.129:4040/jobs/job?id=98",
+              "$$hashKey": "object:12130"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1686644977767_1576906321",
+      "id": "paragraph_1665481481095_854638979",
+      "dateCreated": "2023-06-13T01:29:37-0700",
+      "dateStarted": "2023-06-13T04:50:43-0700",
+      "dateFinished": "2023-06-13T04:50:44-0700",
+      "status": "FINISHED",
+      "$$hashKey": "object:9973"
+    },
+    {
+      "text": "%sql\nselect * from query_3;",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-13T04:54:10-0700",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "nationality": "string",
+                      "players count": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "nationality",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "players count",
+                  "index": 1,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "nationality\tplayers count\nUruguay\t23\nEcuador\t23\nIndia\t23\nBulgaria\t19\nEgypt\t18\nHungary\t13\nRussia\t11\nSouth Africa\t9\nSlovenia\t7\nIvory Coast\t7\nBolivia\t7\nIceland\t6\nNew Zealand\t6\nAustralia\t6\nFinland\t5\nPeru\t4\nRomania\t3\nNorway\t3\nParaguay\t3\nVenezuela\t3\nCanada\t3\nNorthern Ireland\t3\nSweden\t3\nCameroon\t3\nGreece\t2\nWales\t2\nPoland\t2\nChile\t2\nBrazil\t2\nColombia\t2\nMexico\t1\nChina PR\t1\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.206.129:4040/jobs/job?id=100",
+              "$$hashKey": "object:12228"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1686644977767_3737958",
+      "id": "paragraph_1665481545202_444018386",
+      "dateCreated": "2023-06-13T01:29:37-0700",
+      "dateStarted": "2023-06-13T04:52:31-0700",
+      "dateFinished": "2023-06-13T04:52:32-0700",
+      "status": "FINISHED",
+      "$$hashKey": "object:9974"
+    },
+    {
+      "text": "%spark\n// For each club, divide players into age groups: juniors in the range of 18 to 21, mid-age players in the range of 22 to 26, and seniors in the range of 27 and above. Then, determine the most effective age group within each team.\ndf.filter(col(\"league_name\").contains(\"English Premier\")).select(col(\"*\"), when(col(\"age\") >= 18 && col(\"age\") <= 21, \"junior\").when(col(\"age\") >= 22 && col(\"age\") <= 26, \"mid\").when(col(\"age\") >= 27, \"senior\").otherwise(\"UNKOWN\").alias(\"Age Group\"))\n    .groupBy(\"club_name\", \"Age Group\")\n    .pivot(\"Age Group\")\n    .agg(avg(\"overall\"))\n    .groupBy(\"club_name\").agg(avg(\"junior\").as(\"Average performance of juniors\"), avg(\"mid\").as(\"Average performance of mid\"), avg(\"senior\").as(\"Average performance of seniors\"), avg(\"UNKOWN\").as(\"Average performance of others\"))\n    .na.fill(0)\n    .createOrReplaceTempView(\"age_groups_per_team_premier_league\")\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-14T02:32:32-0700",
+      "progress": 50,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.206.129:4040/jobs/job?id=253",
+              "$$hashKey": "object:12276"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1686658878443_709419093",
+      "id": "paragraph_1686658878443_709419093",
+      "dateCreated": "2023-06-13T05:21:18-0700",
+      "dateStarted": "2023-06-14T02:32:32-0700",
+      "dateFinished": "2023-06-14T02:32:33-0700",
+      "status": "FINISHED",
+      "$$hashKey": "object:9975"
+    },
+    {
+      "text": "%sql\nselect * from age_groups_per_team_premier_league order by club_name;\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-14T02:32:46-0700",
+      "progress": 26,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 676.617,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "club_name": "string",
+                      "Average performance of juniors": "string",
+                      "Average performance of mid": "string",
+                      "Average performance of seniors": "string",
+                      "Average performance of others": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "club_name",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "Average performance of juniors",
+                  "index": 1,
+                  "aggr": "sum"
+                },
+                {
+                  "name": "Average performance of mid",
+                  "index": 2,
+                  "aggr": "sum"
+                },
+                {
+                  "name": "Average performance of seniors",
+                  "index": 3,
+                  "aggr": "sum"
+                },
+                {
+                  "name": "Average performance of others",
+                  "index": 4,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "club_name\tAverage performance of juniors\tAverage performance of mid\tAverage performance of seniors\tAverage performance of others\nArsenal\t71.44444444444444\t75.5\t80.5\t0.0\nAston Villa\t53.0\t74.75\t73.41666666666667\t0.0\nBrighton & Hove Albion\t63.63636363636363\t73.27272727272727\t75.45454545454545\t0.0\nBurnley\t61.0\t70.0\t76.33333333333333\t0.0\nChelsea\t77.57142857142857\t78.85714285714286\t80.58333333333333\t0.0\nCrystal Palace\t59.857142857142854\t71.66666666666667\t75.45\t0.0\nEverton\t64.25\t78.16666666666667\t77.15384615384616\t0.0\nFulham\t59.166666666666664\t73.91666666666667\t73.15384615384616\t57.5\nLeeds United\t63.07142857142857\t72.33333333333333\t72.58333333333333\t55.0\nLeicester City\t62.0\t76.5\t75.3076923076923\t0.0\nLiverpool\t68.57142857142857\t78.91666666666667\t84.6923076923077\t65.0\nManchester City\t67.66666666666667\t80.125\t83.25\t0.0\nManchester United\t70.33333333333333\t79.92857142857143\t79.0\t0.0\nNewcastle United\t61.0\t74.71428571428571\t75.2\t0.0\nSheffield United\t59.666666666666664\t70.92307692307692\t74.0\t0.0\nSouthampton\t64.36363636363636\t73.76923076923077\t76.22222222222223\t0.0\nTottenham Hotspur\t66.75\t79.91666666666667\t81.23076923076923\t0.0\nWest Bromwich Albion\t60.42857142857143\t70.88888888888889\t72.26666666666667\t54.0\nWest Ham United\t61.55555555555556\t73.0\t76.35714285714286\t0.0\nWolverhampton Wanderers\t61.833333333333336\t74.125\t77.5\t62.666666666666664\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.206.129:4040/jobs/job?id=254",
+              "$$hashKey": "object:12374"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1686663659995_1305528973",
+      "id": "paragraph_1686663659995_1305528973",
+      "dateCreated": "2023-06-13T06:40:59-0700",
+      "dateStarted": "2023-06-14T02:32:46-0700",
+      "dateFinished": "2023-06-14T02:32:47-0700",
+      "status": "FINISHED",
+      "$$hashKey": "object:9976"
+    },
+    {
+      "text": "%spark\n// For each club, divide players into age groups: juniors in the range of 18 to 21, mid-age players in the range of 22 to 26, and seniors in the range of 27 and above. Then, determine the most effective age group within each team.\ndf.select(col(\"*\"), when(col(\"age\") >= 18 && col(\"age\") <= 21, \"junior\").when(col(\"age\") >= 22 && col(\"age\") <= 26, \"mid\").when(col(\"age\") >= 27, \"senior\").otherwise(\"UNKOWN\").alias(\"Age Category\"))\n    .groupBy(\"club_name\", \"Age Category\")\n    .pivot(\"Age Category\")\n    .agg(avg(\"overall\"))\n    .groupBy(\"club_name\").agg(avg(\"junior\").as(\"Average performance of juniors\"), avg(\"mid\").as(\"Average performance of mid\"), avg(\"senior\").as(\"Average performance of seniors\"), avg(\"UNKOWN\").as(\"Average performance of others\"))\n    .na.fill(0)\n    .createOrReplaceTempView(\"age_groups_per_team\")\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-14T01:51:01-0700",
+      "progress": 1,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.206.129:4040/jobs/job?id=231",
+              "$$hashKey": "object:12422"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1686732134534_1551487551",
+      "id": "paragraph_1686732134534_1551487551",
+      "dateCreated": "2023-06-14T01:42:14-0700",
+      "dateStarted": "2023-06-14T01:51:01-0700",
+      "dateFinished": "2023-06-14T01:51:02-0700",
+      "status": "FINISHED",
+      "$$hashKey": "object:9977"
+    },
+    {
+      "text": "%sql\nSELECT * FROM age_groups_per_team WHERE club_name IS NOT NULL ORDER BY club_name ASC LIMIT 100;\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-14T01:51:04-0700",
+      "progress": 43,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "club_name": "string",
+                      "Average performance of juniors": "string",
+                      "Average performance of mid": "string",
+                      "Average performance of seniors": "string",
+                      "Average performance of others": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "club_name",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "Average performance of juniors",
+                  "index": 1,
+                  "aggr": "sum"
+                },
+                {
+                  "name": "Average performance of mid",
+                  "index": 2,
+                  "aggr": "sum"
+                },
+                {
+                  "name": "Average performance of seniors",
+                  "index": 3,
+                  "aggr": "sum"
+                },
+                {
+                  "name": "Average performance of others",
+                  "index": 4,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "club_name\tAverage performance of juniors\tAverage performance of mid\tAverage performance of seniors\tAverage performance of others\n1. FC Heidenheim 1846\t60.55555555555556\t68.0\t69.5\t0.0\n1. FC Kaiserslautern\t56.166666666666664\t63.9375\t66.33333333333333\t0.0\n1. FC Köln\t64.0\t71.9\t73.9090909090909\t0.0\n1. FC Magdeburg\t58.0\t63.083333333333336\t65.0\t0.0\n1. FC Nürnberg\t63.3\t68.0\t69.33333333333333\t0.0\n1. FC Saarbrücken\t54.333333333333336\t61.3\t63.69230769230769\t0.0\n1. FC Union Berlin\t63.75\t68.76923076923077\t73.45454545454545\t58.0\n1. FSV Mainz 05\t62.1\t71.8125\t73.0\t62.0\nAC Ajaccio\t59.5\t64.0\t68.0\t60.0\nAC Horsens\t52.8\t61.6\t64.625\t51.0\nAC Mineros de Guayana\t56.5\t59.75\t61.8235294117647\t0.0\nAC Monza\t65.25\t65.44444444444444\t68.33333333333333\t0.0\nAD Alcorcón\t62.0\t65.26666666666667\t70.14285714285714\t0.0\nADO Den Haag\t61.125\t65.2\t67.25\t0.0\nAEK Athens\t60.666666666666664\t69.36363636363636\t71.64285714285714\t0.0\nAFC Wimbledon\t55.93333333333333\t61.77777777777778\t63.666666666666664\t50.0\nAIK\t60.0\t64.0\t66.875\t63.0\nAJ Auxerre\t58.666666666666664\t66.27272727272727\t68.46153846153847\t0.0\nAS Monaco\t67.88888888888889\t74.35714285714286\t76.8\t0.0\nAS Nancy Lorraine\t59.666666666666664\t60.666666666666664\t66.0\t55.0\nAS Saint-Étienne\t63.36363636363637\t66.9\t75.1\t63.0\nAZ Alkmaar\t68.45454545454545\t71.375\t72.85714285714286\t0.0\nAalborg BK\t56.55555555555556\t65.125\t68.25\t0.0\nAalesunds FK\t56.0\t62.5\t62.666666666666664\t0.0\nAarhus GF\t56.916666666666664\t68.0\t67.25\t0.0\nAberdeen\t60.142857142857146\t66.44444444444444\t67.36363636363636\t53.0\nAbha Club\t51.0\t60.42857142857143\t62.214285714285715\t0.0\nAcademica Clinceni\t58.666666666666664\t61.0\t63.3\t54.0\nAccrington Stanley\t57.63636363636363\t62.0\t63.75\t50.0\nAdelaide United\t58.22222222222222\t63.285714285714285\t65.0\t0.0\nAjax\t70.33333333333333\t79.0\t78.85714285714286\t62.0\nAl Adalah\t57.0\t60.666666666666664\t61.529411764705884\t0.0\nAl Ahli\t53.0\t60.3\t67.78947368421052\t0.0\nAl Ain FC\t62.5\t62.55555555555556\t69.15384615384616\t0.0\nAl Faisaly\t52.8\t59.0\t64.33333333333333\t0.0\nAl Fateh\t55.0\t56.3\t64.86666666666666\t0.0\nAl Fayha\t59.0\t61.0\t63.470588235294116\t0.0\nAl Hazem\t51.0\t60.111111111111114\t64.85714285714286\t0.0\nAl Hilal\t57.25\t67.0\t70.05\t0.0\nAl Ittihad\t59.333333333333336\t61.86666666666667\t71.08333333333333\t0.0\nAl Nassr\t56.0\t64.0\t72.2\t0.0\nAl Raed\t52.0\t58.357142857142854\t65.33333333333333\t0.0\nAl Shabab\t60.666666666666664\t60.9\t68.8\t0.0\nAl Taawoun\t53.0\t57.583333333333336\t67.375\t0.0\nAl Wehda\t56.0\t58.81818181818182\t66.6875\t0.0\nAlanyaspor\t56.0\t63.888888888888886\t71.3076923076923\t63.0\nAlbacete BP\t59.0\t64.14285714285714\t68.5\t0.0\nAlianza Lima\t53.22222222222222\t61.5\t66.63636363636364\t53.0\nAlways Ready\t56.5\t62.42857142857143\t64.6875\t54.0\nAmiens SC\t60.833333333333336\t67.66666666666667\t70.88888888888889\t0.0\nAmérica de Cali\t57.142857142857146\t62.888888888888886\t68.25\t0.0\nAngers SCO\t61.42857142857143\t69.5\t73.08333333333333\t58.5\nAntalyaspor\t61.875\t65.5\t70.52941176470588\t0.0\nAragua FC\t59.57142857142857\t61.2\t62.55555555555556\t0.0\nArgentinos Juniors\t61.166666666666664\t67.0\t70.3\t0.0\nArsenal\t71.44444444444444\t75.5\t80.5\t0.0\nArsenal de Sarandí\t63.0\t63.625\t67.0\t0.0\nAston Villa\t53.0\t74.75\t73.41666666666667\t0.0\nAstra Giurgiu\t59.857142857142854\t66.125\t67.9090909090909\t50.0\nAtalanta\t65.83333333333333\t75.08333333333333\t77.57142857142857\t60.0\nAthletic Club de Bilbao\t66.28571428571429\t74.27272727272727\t78.66666666666667\t64.0\nAtiker Konyaspor\t62.0\t67.1\t69.4\t0.0\nAtlanta United\t64.0\t65.92857142857143\t68.6\t54.0\nAtlético Clube Goianiense\t70.83333333333333\t70.875\t70.0\t0.0\nAtlético Madrid\t68.88888888888889\t78.0909090909091\t82.15384615384616\t0.0\nAtlético Mineiro\t72.42857142857143\t73.5\t72.88888888888889\t0.0\nAtlético Nacional\t53.5\t67.25\t69.45454545454545\t0.0\nAtlético Tucumán\t56.0\t63.142857142857146\t69.63636363636364\t0.0\nAtlético de San Luis\t59.8\t65.0\t69.0\t0.0\nAudax Italiano\t56.0\t63.81818181818182\t66.42857142857143\t0.0\nBB Erzurumspor\t58.0\t57.0\t66.9090909090909\t0.0\nBK Häcken\t60.0\t64.25\t64.9090909090909\t0.0\nBSC Young Boys\t58.0\t67.85714285714286\t73.0\t0.0\nBahia\t72.33333333333333\t69.0\t69.0\t0.0\nBarcelona Sporting Club\t60.0\t63.5\t66.0\t0.0\nBarnsley\t59.4375\t65.83333333333333\t69.0\t0.0\nBarrow\t58.0\t58.666666666666664\t60.5\t0.0\nBayer 04 Leverkusen\t71.25\t76.27272727272727\t80.0\t64.5\nBayern München II\t59.27272727272727\t58.0\t64.33333333333333\t60.5\nBeerschot AC\t62.166666666666664\t66.18181818181819\t67.45454545454545\t0.0\nBeijing Sinobo Guoan FC\t50.0\t62.142857142857146\t68.84210526315789\t0.0\nBenevento\t56.833333333333336\t69.375\t70.05263157894737\t0.0\nBeşiktaş JK\t64.55555555555556\t72.0\t74.07692307692308\t0.0\nBirmingham City\t58.5\t68.625\t70.8\t52.0\nBlackburn Rovers\t60.18181818181818\t68.81818181818181\t69.25\t0.0\nBlackpool\t54.0\t64.0\t64.8\t0.0\nBoavista FC\t63.6\t69.0909090909091\t72.85714285714286\t0.0\nBoca Juniors\t63.875\t74.0\t76.26666666666667\t0.0\nBohemian FC\t56.4\t59.833333333333336\t61.0\t0.0\nBologna\t64.72727272727273\t71.0\t74.0\t0.0\nBolton Wanderers\t56.55555555555556\t60.3\t63.25\t0.0\nBorussia Dortmund\t67.81818181818181\t78.28571428571429\t81.45454545454545\t68.5\nBorussia Mönchengladbach\t64.2\t77.3\t76.76923076923077\t0.0\nBotafogo\t73.5\t68.4\t72.875\t0.0\nBournemouth\t60.76923076923077\t73.22222222222223\t74.5\t0.0\nBradford City\t52.833333333333336\t60.625\t62.625\t52.0\nBrentford\t61.42857142857143\t70.75\t71.75\t0.0\nBrescia\t62.0\t67.07142857142857\t71.0\t57.0\nBrighton & Hove Albion\t63.63636363636363\t73.27272727272727\t75.45454545454545\t0.0\nBrisbane Roar\t54.0\t60.0\t64.85714285714286\t52.0\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.206.129:4040/jobs/job?id=232",
+              "$$hashKey": "object:12520"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1686732231535_148293479",
+      "id": "paragraph_1686732231535_148293479",
+      "dateCreated": "2023-06-14T01:43:51-0700",
+      "dateStarted": "2023-06-14T01:51:04-0700",
+      "dateFinished": "2023-06-14T01:51:06-0700",
+      "status": "FINISHED",
+      "$$hashKey": "object:9978"
+    },
+    {
+      "text": "%spark\n// Average age in each club\n\ndf.select(\"club_name\", \"age\")\n    .na.drop(\"all\", Seq(\"club_name\"))\n    .groupBy(\"club_name\")\n    .agg(ceil(avg(\"age\")).alias(\"age\"))\n    .orderBy(desc(\"age\"))\n    .createOrReplaceTempView(\"query_4\")\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-14T01:58:37-0700",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1686644977768_195034751",
+      "id": "paragraph_1665486302423_1634532309",
+      "dateCreated": "2023-06-13T01:29:37-0700",
+      "dateStarted": "2023-06-14T01:58:37-0700",
+      "dateFinished": "2023-06-14T01:58:37-0700",
+      "status": "FINISHED",
+      "$$hashKey": "object:9979"
+    },
+    {
+      "text": "%sql\nSELECT * FROM query_4;",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-14T02:08:52-0700",
+      "progress": 100,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "club_name": "string",
+                      "age": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "club_name",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "age",
+                  "index": 1,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "club_name\tage\nShanghai Greenland Shenhua FC\t30\nAC Mineros de Guayana\t30\nAl Fayha\t30\nQingdao Huanghai F.C.\t30\nYokohama FC\t30\nShenzhen FC\t29\nSivasspor\t29\nJorge Wilstermann\t29\nParma\t29\nWuhan Zall\t29\nSport Huancayo\t29\nAl Adalah\t29\nCentral Córdoba\t29\nOlimpia Asunción\t29\nOrlando Pirates\t29\nShandong Luneng TaiShan FC\t28\nRacing Club\t28\nInter\t28\nSuwon Samsung Bluewings\t28\nNew England Revolution\t28\nFC Juárez\t28\nPalmeiras\t28\nAl Hazem\t28\nNottingham Forest\t28\nAlways Ready\t28\nBB Erzurumspor\t28\nKawasaki Frontale\t28\nJeonbuk Hyundai Motors\t28\nAIK\t28\nHenan Jianye FC\t28\nOita Trinita\t28\nAtiker Konyaspor\t28\nDamac FC\t28\nAl Hilal\t28\nSão Paulo\t28\nGuangzhou R&F FC\t28\nCádiz CF\t28\nGençlerbirliği SK\t28\nViktoria Plzeň\t28\nShijiazhuang Ever Bright F.C.\t28\nBeijing Sinobo Guoan FC\t28\nRiver Plate Asunción\t28\nLazio\t28\nClub Libertad\t28\nAl Nassr\t28\nGwangJu FC\t28\nChongqing Dangdai Lifan FC SWM Team\t28\nFC Hermannstadt\t28\nShanghai SIPG FC\t28\nKashiwa Reysol\t28\nMedipol Başakşehir FK\t28\nAl Ahli\t28\nCFR Cluj\t28\nGazişehir Gaziantep F.K.\t28\nDeportivo Binacional\t28\nUrawa Red Diamonds\t28\nAl Taawoun\t28\nIncheon United FC\t28\nHatayspor\t28\nAntalyaspor\t28\nDeportivo Pasto\t28\nBenevento\t28\nUlsan Hyundai FC\t28\nLegia Warszawa\t28\nVegalta Sendai\t28\nAl Shabab\t28\nTianjin TEDA FC\t28\nMacarthur FC\t28\nGalatasaray SK\t27\nCA Osasuna\t27\nColo-Colo\t27\nNewell's Old Boys\t27\nVfL Osnabrück\t27\nFC Argeș\t27\nBusan IPark\t27\nAC Monza\t27\nShimizu S-Pulse\t27\nAl Ittihad\t27\nSporting Kansas City\t27\nHarrogate Town\t27\nDundalk\t27\nFC Lorient\t27\nJunior FC\t27\nFC Cincinnati\t27\nFC Chambly Oise\t27\nPerth Glory\t27\nReal Valladolid CF\t27\nWycombe Wanderers\t27\nGamba Osaka\t27\nSan Lorenzo de Almagro\t27\nClub León\t27\nFlamengo\t27\nSeongnam FC\t27\nRiver Plate\t27\nBK Häcken\t27\nCoquimbo Unido\t27\nLDU Quito\t27\nOud-Heverlee Leuven\t27\nFC Cartagena\t27\nBoca Juniors\t27\nSanfrecce Hiroshima\t27\nMinnesota United FC\t27\nCrystal Palace\t27\nUD Logroñés\t27\nAl Raed\t27\nSagan Tosu\t27\nSD Eibar\t27\nColumbus Crew SC\t27\nNapoli\t27\nEl Nacional\t27\nClub Atlético Tigre\t27\nJiangsu Suning FC\t27\nCusco FC\t27\nFC Seoul\t27\nLevante UD\t27\nAl Wehda\t27\nÇaykur Rizespor\t27\nLeicester City\t27\nHibernian\t27\nSepsi OSK\t27\nGranada CF\t27\nAl Faisaly\t27\nAtlético Tucumán\t27\nAbha Club\t27\nNashville SC\t27\nFC Porto\t27\nMazatlán FC\t27\nTigres U.A.N.L.\t27\nFC Erzgebirge Aue\t27\nSevilla FC\t27\nFenerbahçe SK\t27\nPuebla FC\t27\nPatronato\t27\nNacional Potosí\t27\nReal Salt Lake\t27\nPeñarol\t27\nVasco da Gama\t27\nSC Braga\t27\nKaizer Chiefs\t27\nEttifaq FC\t27\nQuerétaro\t27\nChicago Fire\t27\nVissel Kobe\t27\nRCD Mallorca\t27\nPort Vale\t27\nGenoa\t27\nGangwon FC\t27\nNagoya Grampus\t27\nCruz Azul\t27\nPachuca\t27\nPortland Timbers\t27\nCE Sabadell FC\t27\nSK Brann\t27\nMalmö FF\t27\nStoke City\t27\nFC København\t27\nGuangzhou Evergrande Taobao FC\t27\nWatford\t27\nAl Fateh\t27\nTranmere Rovers\t27\nDC United\t27\nAlanyaspor\t27\nAEK Athens\t27\nLecce\t27\nSydney FC\t27\nLivingston FC\t27\nAl Ain FC\t27\nHebei China Fortune FC\t27\nCD Lugo\t27\nOlympiacos CFP\t27\nC.D. Castellón\t27\nDenizlispor\t27\nJuventus\t27\nSV Sandhausen\t27\nRangers FC\t27\nYokohama F. Marinos\t27\nNacional Asunción\t27\nHokkaido Consadole Sapporo\t27\nRotherham United\t27\nKAA Gent\t26\nNewcastle United\t26\nUD Las Palmas\t26\nBrisbane Roar\t26\nWisła Kraków\t26\nUSL Dunkerque\t26\nLokomotiv Moscow\t26\nVélez Sarsfield\t26\nUniversitatea Craiova\t26\nClub Bolívar\t26\nAberdeen\t26\nLos Angeles FC\t26\nRio Ave FC\t26\nOceânico FC\t26\nSanta Clara\t26\nCardiff City\t26\nCagliari\t26\nFalkenbergs FF\t26\nVfB Lübeck\t26\nSV Wehen Wiesbaden\t26\nKV Kortrijk\t26\nAD Alcorcón\t26\nEintracht Braunschweig\t26\nBurnley\t26\nTSV Hartberg\t26\nPohang Steelers\t26\nÖrebro SK\t26\nRiver Plate Montevideo\t26\nHammarby IF\t26\nBologna\t26\nSol de América\t26\nViktoria Köln\t26\nDaegu FC\t26\nAstra Giurgiu\t26\nWisła Płock\t26\nSt. Johnstone FC\t26\nAlianza Lima\t26\nIpswich Town\t26\nKristiansund BK\t26\nPortimonense SC\t26\nSL Benfica\t26\nClub Atlético Grau\t26\nCheltenham Town\t26\nRoss County FC\t26\nColorado Rapids\t26\nManchester United\t26\nDjurgårdens IF\t26\nRoma\t26\nPolitehnica Iaşi\t26\nViking FK\t26\nSampdoria\t26\nKAS Eupen\t26\nSheffield United\t26\nRC Strasbourg Alsace\t26\nUniversidad Católica\t26\nAJ Auxerre\t26\nFarense\t26\nEmelec\t26\nEintracht Frankfurt\t26\nClub Guaraní\t26\nGuadalajara\t26\nHannover 96\t26\nSpVgg Unterhaching\t26\nSportivo Luqueño\t26\nWestern United FC\t26\nEn Avant de Guingamp\t26\nSporting de Charleroi\t26\nPhiladelphia Union\t26\nToronto FC\t26\nGrêmio\t26\nClube Sport Marítimo\t26\nSantos\t26\nBirmingham City\t26\nFC Botoşani\t26\nGaz Metan Mediaş\t26\nPAOK\t26\nVfL Bochum 1848\t26\nDinamo Bucureşti\t26\nGoiás\t26\nSeattle Sounders FC\t26\nŚląsk Wrocław\t26\nKFC Uerdingen 05\t26\nGöztepe SK\t26\nFC Girondins de Bordeaux\t26\nVillarreal CF\t26\nDeportivo Toluca\t26\nSK Slavia Praha\t26\nFC Hansa Rostock\t26\n1. FC Union Berlin\t26\nFC Bayern München\t26\nSan Jose Earthquakes\t26\nAlbacete BP\t26\nSC Verl\t26\nCrawley Town\t26\nKasimpaşa SK\t26\nOs Belenenses\t26\nSangju Sangmu FC\t26\nInter Miami\t26\nBotafogo\t26\nSarpsborg 08 FF\t26\nSunderland\t26\nDeportivo Alavés\t26\nLA Galaxy\t26\nShakhtar Donetsk\t26\nHolstein Kiel\t26\nAston Villa\t26\nCD Leganés\t26\nMontpellier HSC\t26\nMonterrey\t26\nCrotone\t26\nMolde FK\t26\nAtlético Nacional\t26\nKilmarnock\t26\nKalmar FF\t26\nFC Tokyo\t26\nAtlético de San Luis\t26\nRayo Vallecano\t26\nSV Meppen\t26\nDelfín SC\t26\nBarrow\t26\nSPAL\t26\nFinn Harps\t26\nPiast Gliwice\t26\nGirona FC\t26\nSD Huesca\t26\nGrenoble Foot 38\t26\nYeni Malatyaspor\t26\nNorwich City\t26\nClub Atlético Colón\t26\nBeşiktaş JK\t26\nShamrock Rovers\t26\nArgentinos Juniors\t26\nCD Nacional\t26\nArsenal de Sarandí\t26\nShonan Bellmare\t26\nSV Zulte-Waregem\t26\nFC Schalke 04\t26\nWest Bromwich Albion\t26\nSSV Jahn Regensburg\t26\nKayserispor\t26\nNewcastle Jets\t26\nHellas Verona\t26\nTorino\t26\nReal Betis\t26\nCerezo Osaka\t26\nPodbeskidzie Bielsko-Biała\t26\nSassuolo\t26\nIK Sirius\t26\nChelsea\t26\nGimnasia y Esgrima La Plata\t26\nFluminense\t26\nKashima Antlers\t26\nUTA Arad\t26\nMorecambe\t26\nHouston Dynamo\t26\nMjøndalen IF\t26\nAtalanta\t26\nClub Atlético Banfield\t26\nClub América\t26\nLuton Town\t26\nIFK Göteborg\t26\nRodez Aveyron Football\t26\nClub Atlético Aldosivi\t26\nWest Ham United\t26\nHJK Helsinki\t26\nBarcelona Sporting Club\t26\nBurton Albion\t26\nRoyal Antwerp FC\t26\n1. FC Saarbrücken\t26\nOrlando City SC\t26\nSt. Mirren\t26\nIK Start\t26\nUdinese\t26\nAragua FC\t26\nAtlanta United\t26\nCoritiba\t26\nPreston North End\t26\nHelsingborgs IF\t26\nMontreal Impact\t26\nCracovia\t26\nSD Aucas\t26\nDalian YiFang FC\t26\nMillonarios FC\t26\nSalford City\t25\nParis Saint-Germain\t25\nUnión de Santa Fe\t25\nClub Necaxa\t25\nBradford City\t25\nFulham\t25\nWolfsberger AC\t25\nNîmes Olympique\t25\nSporting CP\t25\nMilton Keynes Dons\t25\nSCR Altach\t25\nMotherwell\t25\nMillwall\t25\nBeerschot AC\t25\nPlymouth Argyle\t25\nMoreirense FC\t25\nNewport County\t25\nVålerenga Fotball\t25\nAmérica de Cali\t25\nSantos Laguna\t25\nCF Fuenlabrada\t25\nMansfield Town\t25\nNew York City FC\t25\nRochdale\t25\nArsenal\t25\nTürkgücü München\t25\nParis FC\t25\nReal Sporting de Gijón\t25\n1. FC Heidenheim 1846\t25\nClermont Foot 63\t25\nSt. Patrick's Athletic\t25\nLa Berrichonne de Châteauroux\t25\nRosenborg BK\t25\nBSC Young Boys\t25\nFC Sion\t25\nDerby County\t25\nSK Rapid Wien\t25\nSC Freiburg\t25\nFC Voluntari\t25\nFC Metz\t25\nShelbourne FC\t25\nClub Atlas\t25\nRoyal Excel Mouscron\t25\nInternacional\t25\nMSV Duisburg\t25\nAC Ajaccio\t25\nUniversidad Católica del Ecuador\t25\nBoavista FC\t25\nSV Waldhof Mannheim\t25\nFC Barcelona\t25\nAtlético Mineiro\t25\nEstudiantes de Mérida\t25\nIndependiente del Valle\t25\nBolton Wanderers\t25\nDeportivo Cali\t25\nSV Werder Bremen\t25\nMelbourne City FC\t25\nChindia Târgovişte\t25\nFeyenoord\t25\nSwindon Town\t25\nChievo Verona\t25\nLe Havre AC\t25\n1. FC Magdeburg\t25\nJagiellonia Białystok\t25\nFC Dallas\t25\nKV Oostende\t25\nSandefjord Fotball\t25\nSV Ried\t25\nReal Madrid\t25\nLeyton Orient\t25\nRanders FC\t25\nReal Zaragoza\t25\nHamburger SV\t25\nFC Zürich\t25\nFC Lugano\t25\nSparta Praha\t25\nVejle Boldklub\t25\nMelgar FBC\t25\nGrimsby Town\t25\nAalesunds FK\t25\nFC Augsburg\t25\nOriente Petrolero\t25\nNorthampton Town\t25\nMálaga CF\t25\nStal Mielec\t25\nDefensa y Justicia\t25\nKarlsruher SC\t25\nBristol Rovers\t25\nBorussia Mönchengladbach\t25\nFC Midtjylland\t25\nBrighton & Hove Albion\t25\nMKE Ankaragücü\t25\nLiverpool\t25\nAudax Italiano\t25\nTottenham Hotspur\t25\nAcademica Clinceni\t25\nGetafe CF\t25\nRCD Espanyol\t25\nEstudiantes de La Plata\t25\nPau FC\t25\nAngers SCO\t25\nFC Würzburger Kickers\t25\nFatih Karagümrük S.K.\t25\nSheffield Wednesday\t25\nClub Blooming\t25\nFC Ingolstadt 04\t25\nMjällby AIF\t25\nPortsmouth\t25\nReal Oviedo\t25\nSV Darmstadt 98\t25\nCeltic\t25\nZagłębie Lubin\t25\nOlympique de Marseille\t25\nZamora FC\t25\nDSC Arminia Bielefeld\t25\nManchester City\t25\nDijon FCO\t25\nBorussia Dortmund\t25\nTSG 1899 Hoffenheim\t25\nVVV-Venlo\t25\nUD Almería\t25\n1. FC Nürnberg\t25\nUnión La Calera\t25\nDynamo Kyiv\t25\nAthletic Club de Bilbao\t25\nSD Ponferradina\t25\nClub Athletico Paranaense\t25\nBrescia\t25\nNew York Red Bulls\t25\nBristol City\t25\nLASK Linz\t25\nFC Utrecht\t25\nVitória Guimarães\t25\nRacing Club de Lens\t25\nAtlético Madrid\t25\nLechia Gdańsk\t25\nFiorentina\t25\nStade Brestois 29\t25\nHallescher FC\t25\nClub Atlético Talleres\t25\nElche CF\t25\nSpartak Moscow\t25\nFortuna Düsseldorf\t25\nRosario Central\t25\nReal Sociedad\t25\nVfL Wolfsburg\t25\nSligo Rovers\t25\nFSV Zwickau\t25\nLyngby BK\t25\nSparta Rotterdam\t25\nAC Horsens\t25\nStandard de Liège\t25\nWarta Poznań\t25\nSouthampton\t25\nGil Vicente FC\t25\nDerry City\t25\nFK Austria Wien\t25\nAdelaide United\t25\nRaków Częstochowa\t25\nLlaneros de Guanare\t25\nWestern Sydney Wanderers\t25\nBayer 04 Leverkusen\t25\nClub Plaza Colonia\t25\nCD Tenerife\t25\nAS Monaco\t25\nHuddersfield Town\t25\nBahia\t25\nTrabzonspor\t25\nCentro Atlético Fénix\t25\nAS Nancy Lorraine\t25\nEmpoli\t25\nFC Vaduz\t25\nEverton\t25\nCD Tondela\t25\n1. FC Köln\t25\nSpezia\t25\nClub Atlético Lanús\t24\nFC Lausanne-Sport\t24\nClub Tijuana\t24\nRKC Waalwijk\t24\nFC Emmen\t24\nIndependiente\t24\nSG Dynamo Dresden\t24\nCentral Coast Mariners\t24\nFC Luzern\t24\n1. FC Kaiserslautern\t24\nOldham Athletic\t24\nGórnik Zabrze\t24\nHertha BSC\t24\nFortuna Sittard\t24\nFortaleza\t24\nClub Atlético Huracán\t24\nTSV 1860 München\t24\nValenciennes FC\t24\nKSV Cercle Brugge\t24\nNacional de Montevideo\t24\nLeeds United\t24\nGodoy Cruz\t24\nAmiens SC\t24\nValencia CF\t24\nServette FC\t24\nCD Mirandés\t24\nBrøndby IF\t24\nCrewe Alexandra\t24\nPFC CSKA Moscow\t24\nSint-Truidense VV\t24\nRB Leipzig\t24\nSwansea City\t24\nU.N.A.M.\t24\nWillem II\t24\nBournemouth\t24\nVarbergs BoIS\t24\nAZ Alkmaar\t24\nOlympique Lyonnais\t24\nSKN St. Pölten\t24\nKV Mechelen\t24\nWellington Phoenix\t24\nStade Malherbe Caen\t24\nSC Paderborn 07\t24\nÖstersunds FK\t24\nStade Rennais FC\t24\nHeracles Almelo\t24\nSønderjyskE\t24\nESTAC Troyes\t24\nOxford United\t24\nFC Admira Wacker Mödling\t24\nCork City\t24\nSpVgg Greuther Fürth\t24\nIndependiente Medellín\t24\nVfB Stuttgart\t24\nFleetwood Town\t24\nDundee United\t24\nWSG Tirol\t24\nVancouver Whitecaps FC\t24\nFC Nantes\t24\nPogoń Szczecin\t24\nStevenage\t24\nReading\t24\nWalsall\t24\nFC Basel 1893\t24\nLiverpool Fútbol Club\t24\nOdds BK\t24\nStabæk Fotball\t24\nHamilton Academical FC\t24\nWolverhampton Wanderers\t24\nIF Elfsborg\t24\nAjax\t24\nRC Celta\t24\nPanathinaikos FC\t24\nDinamo Zagreb\t24\nPEC Zwolle\t24\nLech Poznań\t24\nAarhus GF\t24\n1. FSV Mainz 05\t24\nVitesse\t24\nQueens Park Rangers\t24\nSK Sturm Graz\t24\nMilan\t24\nBlackpool\t24\nWigan Athletic\t24\nColchester United\t24\nIFK Norrköping\t24\nFC St. Pauli\t24\nFCSB (Steaua)\t24\nAalborg BK\t24\nMelbourne Victory\t24\nAtlético Clube Goianiense\t24\nCeará Sporting Club\t24\nExeter City\t24\nFC Paços de Ferreira\t24\nPSV\t24\nBlackburn Rovers\t24\nSouthend United\t24\nFK Haugesund\t24\nCambridge United\t24\nClub Brugge KV\t24\nOdense Boldklub\t24\nAS Saint-Étienne\t24\nGillingham\t24\nFC Sochaux-Montbéliard\t24\nCharlton Athletic\t24\nShrewsbury\t24\nCoventry City\t24\nFC St. Gallen\t23\nCD Huachipato\t23\nStrømsgodset IF\t23\nFC Red Bull Salzburg\t23\nWaasland-Beveren\t23\nStade de Reims\t23\nCarlisle United\t23\nCaracas FC\t23\nBrentford\t23\nFamalicão\t23\nKRC Genk\t23\nRSC Anderlecht\t23\nADO Den Haag\t23\nFC Groningen\t23\nMiddlesbrough\t23\nFC Viitorul\t23\nOGC Nice\t23\nDoncaster Rovers\t23\nWaterford FC\t23\nPeterborough United\t23\nToulouse Football Club\t23\nLOSC Lille\t23\nScunthorpe United\t23\nHull City\t23\nChamois Niortais Football Club\t23\nAccrington Stanley\t23\nBohemian FC\t23\nFK Bodø/Glimt\t23\nForest Green Rovers\t23\nFC Twente\t23\nBarnsley\t22\nAFC Wimbledon\t22\nSC Heerenveen\t22\nLincoln City\t22\nBayern München II\t21\nFC Nordsjælland\t21\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.206.129:4040/jobs/job?id=236",
+              "$$hashKey": "object:12660"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1686644977768_724584335",
+      "id": "paragraph_1665486519950_1519970469",
+      "dateCreated": "2023-06-13T01:29:37-0700",
+      "dateStarted": "2023-06-14T01:58:39-0700",
+      "dateFinished": "2023-06-14T01:58:39-0700",
+      "status": "FINISHED",
+      "$$hashKey": "object:9980"
+    },
+    {
+      "text": "%spark\ndf.select(\"preferred_foot\")\n            .groupBy(\"preferred_foot\")\n            .count\n            .orderBy(desc(\"count\"))\n            .createOrReplaceTempView(\"query_5\")\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-14T02:11:41-0700",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1686644977768_393656139",
+      "id": "paragraph_1665487015655_665854842",
+      "dateCreated": "2023-06-13T01:29:37-0700",
+      "dateStarted": "2023-06-14T02:11:41-0700",
+      "dateFinished": "2023-06-14T02:11:41-0700",
+      "status": "FINISHED",
+      "$$hashKey": "object:9981"
+    },
+    {
+      "text": "%sql\nSELECT * FROM query_5",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-14T02:11:44-0700",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "pieChart",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "preferred_foot": "string",
+                      "count": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "lineChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "preferred_foot",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "count",
+                  "index": 1,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "preferred_foot\tcount\nRight\t14448\nLeft\t4496\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.206.129:4040/jobs/job?id=238",
+              "$$hashKey": "object:12800"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1686644977768_365953166",
+      "id": "paragraph_1665487203790_1909833545",
+      "dateCreated": "2023-06-13T01:29:37-0700",
+      "dateStarted": "2023-06-14T02:11:44-0700",
+      "dateFinished": "2023-06-14T02:11:45-0700",
+      "status": "FINISHED",
+      "$$hashKey": "object:9982"
+    },
+    {
+      "text": "%spark\n// The most 100 player with high international reputation\ndf.select(\"short_name\", \"international_reputation\")\n            .orderBy(desc(\"international_reputation\"))\n            .limit(100)\n            .createOrReplaceTempView(\"query_6\")\n            ",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-14T02:14:20-0700",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1686644977768_796159225",
+      "id": "paragraph_1665487554114_1044107933",
+      "dateCreated": "2023-06-13T01:29:37-0700",
+      "dateStarted": "2023-06-14T02:12:36-0700",
+      "dateFinished": "2023-06-14T02:12:36-0700",
+      "status": "FINISHED",
+      "$$hashKey": "object:9983"
+    },
+    {
+      "text": "%sql\nSELECT * FROM query_6;",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-14T02:13:15-0700",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "short_name": "string",
+                      "international_reputation": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "short_name",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "international_reputation",
+                  "index": 1,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "short_name\tinternational_reputation\nCristiano Ronaldo\t5\nL. Suárez\t5\nZ. Ibrahimović\t5\nL. Messi\t5\nNeymar Jr\t5\nM. Neuer\t5\nIniesta\t4\nPiqué\t4\nG. Buffon\t4\nSergio Busquets\t4\nJ. Rodríguez\t4\nP. Pogba\t4\nDavid Luiz\t4\nA. Sánchez\t4\nW. Rooney\t4\nG. Bale\t4\nG. Chiellini\t4\nT. Kroos\t4\nG. Higuaín\t4\nA. Vidal\t4\nL. Modrić\t4\nI. Rakitić\t4\nJ. Boateng\t4\nM. Özil\t4\nS. Agüero\t4\nF. Ribéry\t4\nDiego Costa\t4\nPepe\t4\nHulk\t4\nDavid Silva\t4\nJ. Mascherano\t4\nCesc Fàbregas\t4\nR. Lewandowski\t4\nE. Hazard\t4\nH. Lloris\t4\nK. De Bruyne\t4\nA. Di María\t4\nA. Griezmann\t4\nSergio Ramos\t4\nDe Gea\t4\nK. Benzema\t4\nM. Hummels\t4\nThiago Silva\t4\nM. Reus\t4\nD. Alaba\t4\nMarcelo\t4\nT. Courtois\t4\nCoutinho\t4\nT. Müller\t4\nAlex Telles\t3\nJ. Kimmich\t3\nA. Witsel\t3\nRoberto Firmino\t3\nN. Tagliafico\t3\nAzpilicueta\t3\nFelipe\t3\nC. Immobile\t3\nR. Guerreiro\t3\nDouglas Costa\t3\nAlex Sandro\t3\nJ. Corona\t3\nM. Ødegaard\t3\nK. Coman\t3\nR. Bürki\t3\nR. Jiménez\t3\nR. Sterling\t3\nLucas Leiva\t3\nG. Wijnaldum\t3\nN. Kanté\t3\nSaúl\t3\nJ. Iličić\t3\nJ. Brandt\t3\nD. Mertens\t3\nJ. Sancho\t3\nA. Onana\t3\nRui Patrício\t3\nR. Lukaku\t3\nL. Insigne\t3\nP. Aubameyang\t3\nK. Havertz\t3\nIsco\t3\nPizzi\t3\nS. de Vrij\t3\nD. Alli\t3\nA. Gómez\t3\nFernandinho\t3\nT. Werner\t3\nP. Dybala\t3\nCarvajal\t3\nL. Hernández\t3\nThiago\t3\nS. Sirigu\t3\nS. Handanovič\t3\nM. de Ligt\t3\nS. Gnabry\t3\nT. Alderweireld\t3\nO. Dembélé\t3\nS. Mané\t3\nMarquinhos\t3\nH. Ziyech\t3\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.206.129:4040/jobs/job?id=239",
+              "$$hashKey": "object:12940"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1686644977769_1735576128",
+      "id": "paragraph_1665487628105_717030515",
+      "dateCreated": "2023-06-13T01:29:37-0700",
+      "dateStarted": "2023-06-14T02:13:15-0700",
+      "dateFinished": "2023-06-14T02:13:16-0700",
+      "status": "FINISHED",
+      "$$hashKey": "object:9984"
+    },
+    {
+      "text": "%spark\n// The most expensive 100 players\ndf.select(\"short_name\", \"value_eur\")\n    .orderBy(desc(\"value_eur\"))\n    .limit(100)\n    .createOrReplaceTempView(\"query_7\")\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-14T02:16:53-0700",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1686644977777_175499201",
+      "id": "paragraph_1665489381143_285199874",
+      "dateCreated": "2023-06-13T01:29:37-0700",
+      "dateStarted": "2023-06-14T02:16:54-0700",
+      "dateFinished": "2023-06-14T02:16:54-0700",
+      "status": "FINISHED",
+      "$$hashKey": "object:9985"
+    },
+    {
+      "text": "%sql\nSELECT * FROM query_7;",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-14T02:16:58-0700",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "short_name": "string",
+                      "value_eur": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "short_name",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "value_eur",
+                  "index": 1,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "short_name\tvalue_eur\nK. Mbappé\t105500000\nNeymar Jr\t90000000\nK. De Bruyne\t87000000\nR. Lewandowski\t80000000\nS. Mané\t78000000\nM. Salah\t78000000\nV. van Dijk\t75500000\nJ. Oblak\t75000000\nR. Sterling\t72500000\nP. Dybala\t71000000\nH. Kane\t71000000\nM. ter Stegen\t69500000\nJ. Sancho\t69500000\nL. Messi\t67500000\nJ. Kimmich\t65000000\nBruno Fernandes\t63000000\nAlisson\t62500000\nBernardo Silva\t60000000\nT. Alexander-Arnold\t60000000\nCasemiro\t59500000\nE. Hazard\t58000000\nK. Havertz\t57000000\nA. Laporte\t56000000\nT. Courtois\t56000000\nT. Kroos\t55000000\nFabinho\t54500000\nEderson\t53500000\nA. Robertson\t53000000\nK. Benzema\t53000000\nM. Rashford\t53000000\nS. Agüero\t53000000\nH. Son\t52500000\nRoberto Firmino\t52000000\nL. Sané\t51500000\nN. Kanté\t51000000\nA. Griezmann\t50500000\nF. de Jong\t50500000\nP. Pogba\t50000000\nM. Verratti\t50000000\nK. Koulibaly\t50000000\nT. Werner\t49500000\nM. de Ligt\t49500000\nS. Milinković-Savić\t49000000\nC. Immobile\t48500000\nM. Depay\t48500000\nS. Gnabry\t47500000\nR. Varane\t46500000\nCristiano Ronaldo\t46000000\nP. Aubameyang\t45000000\nE. Haaland\t45000000\nR. Lukaku\t45000000\nM. Icardi\t45000000\nM. Škriniar\t44500000\nL. Martínez\t44500000\nC. Lenglet\t44500000\nLuis Alberto\t44000000\nH. Ziyech\t44000000\nMarquinhos\t44000000\nRodri\t44000000\nOyarzabal\t42500000\nT. Müller\t42000000\nG. Donnarumma\t41500000\nArthur\t41000000\nA. Martial\t41000000\nRicardo Pereira\t40500000\nK. Coman\t40500000\nJ. Brandt\t40500000\nL. Goretzka\t39500000\nC. Eriksen\t39000000\nA. Di María\t39000000\nSaúl\t38500000\nKoke\t38000000\nSergio Busquets\t38000000\nCarvajal\t38000000\nL. Insigne\t37500000\nN. Süle\t37500000\nR. Mahrez\t37500000\nThiago\t37000000\nG. Wijnaldum\t37000000\nW. Ndidi\t36500000\nR. Guerreiro\t36500000\nJ. Henderson\t36500000\nM. Ødegaard\t36000000\nF. Valverde\t36000000\nJ. Giménez\t36000000\nO. Dembélé\t35500000\nM. Pjanić\t35500000\nGrimaldo\t35500000\nT. Partey\t35000000\nA. Hakimi\t35000000\nS. Bergwijn\t34500000\nGabriel Jesus\t34500000\nA. Gómez\t34500000\nM. Reus\t34000000\nW. Szczęsny\t34000000\nD. Alli\t34000000\nB. Leno\t33500000\nM. Hummels\t33000000\nParejo\t33000000\nD. van de Beek\t33000000\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.206.129:4040/jobs/job?id=240",
+              "$$hashKey": "object:13080"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1686644977777_2093093813",
+      "id": "paragraph_1665489526720_943038085",
+      "dateCreated": "2023-06-13T01:29:37-0700",
+      "dateStarted": "2023-06-14T02:16:58-0700",
+      "dateFinished": "2023-06-14T02:16:58-0700",
+      "status": "FINISHED",
+      "$$hashKey": "object:9986"
+    },
+    {
+      "text": "%spark\n// The most 100 expensive clubs\ndf.groupBy(\"club_name\")\n    .agg(sum(\"value_eur\").alias(\"total_value\"), count(\"short_name\").alias(\"Number of players\"))\n    .orderBy(desc(\"total_value\"))\n    .limit(100)\n    .createOrReplaceTempView(\"query_8\")",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-14T02:20:31-0700",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1686644977777_1627628367",
+      "id": "paragraph_1665489618813_612202943",
+      "dateCreated": "2023-06-13T01:29:37-0700",
+      "dateStarted": "2023-06-14T02:20:31-0700",
+      "dateFinished": "2023-06-14T02:20:32-0700",
+      "status": "FINISHED",
+      "$$hashKey": "object:9987"
+    },
+    {
+      "text": "%sql\nSELECT * FROM query_8",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-14T02:27:39-0700",
+      "progress": 40,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "club_name": "string",
+                      "total_value": "string",
+                      "Number of players": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "club_name",
+                  "index": 0,
+                  "aggr": "sum"
+                },
+                {
+                  "name": "Number of players",
+                  "index": 2,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "total_value",
+                  "index": 1,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "club_name\ttotal_value\tNumber of players\nLiverpool\t840625000\t33\nReal Madrid\t760850000\t32\nManchester City\t747275000\t33\nFC Barcelona\t722200000\t33\nFC Bayern München\t609700000\t22\nParis Saint-Germain\t605675000\t29\nChelsea\t602275000\t33\nAtlético Madrid\t582500000\t33\nTottenham Hotspur\t571525000\t33\nManchester United\t564130000\t33\nJuventus\t524450000\t31\nInter\t509325000\t33\nBorussia Dortmund\t482850000\t31\nNapoli\t424150000\t33\nArsenal\t417300000\t33\nSL Benfica\t368100000\t30\nLazio\t359775000\t33\nSevilla FC\t357875000\t33\nLeicester City\t345270000\t33\nRB Leipzig\t344220000\t29\nEverton\t320975000\t33\nVillarreal CF\t307125000\t32\nBayer 04 Leverkusen\t303525000\t29\nAtalanta\t301900000\t33\nFC Porto\t291625000\t30\nReal Sociedad\t290470000\t33\nBorussia Mönchengladbach\t288500000\t33\nMilan\t282170000\t30\nOlympique Lyonnais\t259065000\t25\nValencia CF\t254950000\t33\nAthletic Club de Bilbao\t253550000\t31\nAjax\t250600000\t25\nReal Betis\t243290000\t33\nRoma\t238355000\t31\nSporting CP\t236800000\t30\nAS Monaco\t229800000\t33\nNewcastle United\t229500000\t33\nWolverhampton Wanderers\t226575000\t33\nWest Ham United\t220745000\t33\nVfL Wolfsburg\t214000000\t30\nGetafe CF\t212645000\t33\nOlympique de Marseille\t205225000\t33\nTSG 1899 Hoffenheim\t200565000\t32\nEintracht Frankfurt\t196025000\t31\nLOSC Lille\t191720000\t33\nHertha BSC\t189830000\t32\nAston Villa\t187230000\t33\nSouthampton\t183175000\t33\nLevante UD\t179675000\t33\nBrighton & Hove Albion\t178175000\t33\nTorino\t177575000\t33\nStade Rennais FC\t175395000\t33\nSC Braga\t175125000\t30\nCrystal Palace\t173735000\t33\nWatford\t169725000\t30\nRC Celta\t169700000\t33\nPSV\t169500000\t25\nGranada CF\t166400000\t33\nFiorentina\t163990000\t33\nOGC Nice\t162350000\t30\nFC Schalke 04\t158875000\t29\nDeportivo Alavés\t156425000\t33\nRiver Plate\t153315000\t28\nBurnley\t150430000\t30\nFulham\t148675000\t33\nDynamo Kyiv\t146250000\t28\nBoca Juniors\t145910000\t28\nSheffield United\t145305000\t31\nRCD Espanyol\t143900000\t27\nShakhtar Donetsk\t143175000\t28\nSassuolo\t141835000\t33\nSD Eibar\t141190000\t30\nFeyenoord\t140790000\t27\nSV Werder Bremen\t140175000\t33\nCA Osasuna\t139875000\t31\nReal Valladolid CF\t139225000\t33\nFlamengo\t137700000\t20\nGalatasaray SK\t133775000\t30\nClub Brugge KV\t133710000\t27\nFC Augsburg\t128695000\t32\nSC Freiburg\t128655000\t31\nSpartak Moscow\t125720000\t28\nAZ Alkmaar\t123950000\t26\nSK Slavia Praha\t122075000\t25\nMedipol Başakşehir FK\t120400000\t30\n1. FC Köln\t118985000\t30\nBologna\t118810000\t33\n1. FSV Mainz 05\t118600000\t33\nPFC CSKA Moscow\t118270000\t25\nCagliari\t118025000\t32\nMonterrey\t116180000\t29\nFC Girondins de Bordeaux\t115670000\t29\nCeltic\t114625000\t28\nFC Nantes\t113045000\t33\nUdinese\t111330000\t33\nTigres U.A.N.L.\t111015000\t26\nGrêmio\t110350000\t20\nBournemouth\t109965000\t30\nFC Red Bull Salzburg\t108065000\t27\nMontpellier HSC\t107250000\t29\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.206.129:4040/jobs/job?id=250",
+              "$$hashKey": "object:13220"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1686644977777_1263326798",
+      "id": "paragraph_1665489778233_1051788226",
+      "dateCreated": "2023-06-13T01:29:37-0700",
+      "dateStarted": "2023-06-14T02:27:20-0700",
+      "dateFinished": "2023-06-14T02:27:20-0700",
+      "status": "FINISHED",
+      "$$hashKey": "object:9988"
+    },
+    {
+      "text": "%spark\n\ndf.select(\"short_name\", \"club_name\", \"value_eur\")\n            .filter(df(\"club_name\").isNotNull && df(\"value_eur\").isNotNull)\n            .filter(df(\"nationality\").like(\"Egypt\"))\n            .orderBy(desc(\"value_eur\"))\n            .limit(10)\n            .createOrReplaceTempView(\"query_9\")\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-14T02:29:04-0700",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1686644977777_1163416372",
+      "id": "paragraph_1665490133893_1051017652",
+      "dateCreated": "2023-06-13T01:29:37-0700",
+      "dateStarted": "2023-06-14T02:28:00-0700",
+      "dateFinished": "2023-06-14T02:28:00-0700",
+      "status": "FINISHED",
+      "$$hashKey": "object:9989"
+    },
+    {
+      "text": "%sql\nSELECT * FROM query_9;",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-14T02:29:08-0700",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "short_name": "string",
+                      "club_name": "string",
+                      "value_eur": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "lineChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "short_name",
+                  "index": 0,
+                  "aggr": "sum"
+                },
+                {
+                  "name": "club_name",
+                  "index": 1,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "value_eur",
+                  "index": 2,
+                  "aggr": "max"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "short_name\tclub_name\tvalue_eur\nM. Salah\tLiverpool\t78000000\nTrezeguet\tAston Villa\t8500000\nM. Elneny\tArsenal\t8000000\nA. Hegazi\tWest Bromwich Albion\t2900000\nA. Hassan\tOlympiacos CFP\t2800000\nS. Morsy\tMiddlesbrough\t1600000\nA. Elmohamady\tAston Villa\t1500000\nK. Hafez\tYeni Malatyaspor\t1100000\nO. Yaisien\tAl Ain FC\t1000000\nA. Tarek\tNew York Red Bulls\t925000\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.206.129:4040/jobs/job?id=249",
+              "$$hashKey": "object:13360"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1686644977777_622184341",
+      "id": "paragraph_1665490272728_636158847",
+      "dateCreated": "2023-06-13T01:29:37-0700",
+      "dateStarted": "2023-06-14T02:26:19-0700",
+      "dateFinished": "2023-06-14T02:26:19-0700",
+      "status": "FINISHED",
+      "$$hashKey": "object:9990"
+    },
+    {
+      "text": "%spark\ndf.filter(col(\"league_name\").contains(\"Premier\"))\n    .select(\"short_name\", \"club_name\", \"skill_ball_control\")\n    .orderBy(desc(\"skill_ball_control\"))\n    .limit(100)\n    .createOrReplaceTempView(\"query_10\")",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-14T02:31:12-0700",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1686644977777_2044011871",
+      "id": "paragraph_1665498047875_1218639950",
+      "dateCreated": "2023-06-13T01:29:37-0700",
+      "dateStarted": "2023-06-14T02:31:13-0700",
+      "dateFinished": "2023-06-14T02:31:13-0700",
+      "status": "FINISHED",
+      "$$hashKey": "object:9991"
+    },
+    {
+      "text": "%sql\nSELECT * FROM query_10;",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-14T02:31:15-0700",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "short_name": "string",
+                      "club_name": "string",
+                      "skill_ball_control": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default",
+                  "style": "stack"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "short_name",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "skill_ball_control",
+                  "index": 2,
+                  "aggr": "max"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "short_name\tclub_name\tskill_ball_control\nBernardo Silva\tManchester City\t92\nK. De Bruyne\tManchester City\t92\nThiago\tLiverpool\t91\nRoberto Firmino\tLiverpool\t91\nR. Mahrez\tManchester City\t91\nP. Pogba\tManchester United\t90\nJ. Rodríguez\tEverton\t90\nS. Agüero\tManchester City\t89\nM. Salah\tLiverpool\t89\nM. Kovačić\tChelsea\t89\nS. Mané\tLiverpool\t89\nN. Keïta\tLiverpool\t88\nM. Özil\tArsenal\t88\nR. Sterling\tManchester City\t88\nG. Wijnaldum\tLiverpool\t88\nI. Gündoğan\tManchester City\t88\nMarlos\tShakhtar Donetsk\t88\nBruno Fernandes\tManchester United\t88\nK. Havertz\tChelsea\t87\nT. Alexander-Arnold\tLiverpool\t87\nA. Martial\tManchester United\t87\nH. Son\tTottenham Hotspur\t87\nJoão Moutinho\tWolverhampton Wanderers\t86\nW. Zaha\tCrystal Palace\t86\nGabriel Jesus\tManchester City\t86\nB. Traoré\tAston Villa\t86\nT. Ndombele\tTottenham Hotspur\t86\nG. Lo Celso\tTottenham Hotspur\t86\nLucas Moura\tTottenham Hotspur\t85\nM. Rashford\tManchester United\t85\nTaison\tShakhtar Donetsk\t85\nT. Werner\tChelsea\t85\nS. Bergwijn\tTottenham Hotspur\t85\nJuan Mata\tManchester United\t85\nJorginho\tChelsea\t85\nA. Lacazette\tArsenal\t85\nG. Sigurðsson\tEverton\t85\nD. van de Beek\tManchester United\t85\nD. Alli\tTottenham Hotspur\t85\nH. Ziyech\tChelsea\t85\nDani Ceballos\tArsenal\t85\nJ. Maddison\tLeicester City\t84\nJ. Henderson\tLiverpool\t84\nJoão Cancelo\tManchester City\t84\nA. Oxlade-Chamberlain\tLiverpool\t84\nFelipe Anderson\tWest Ham United\t84\nR. Barkley\tChelsea\t84\nDiogo Jota\tLiverpool\t84\nH. Kane\tTottenham Hotspur\t84\nA. Lallana\tBrighton & Hove Albion\t84\nBernard\tEverton\t83\nAdama Traoré\tWolverhampton Wanderers\t83\nY. Tielemans\tLeicester City\t83\nS. Boufal\tSouthampton\t83\nG. Bale\tTottenham Hotspur\t83\nPablo Fornals\tWest Ham United\t83\nC. Pulisic\tChelsea\t83\nP. Foden\tManchester City\t83\nR. Jiménez\tWolverhampton Wanderers\t83\nA. Saint-Maximin\tNewcastle United\t83\nL. Digne\tEverton\t83\nAllan\tEverton\t83\nMarcos Alonso\tChelsea\t83\nFred\tManchester United\t83\nE. Lamela\tTottenham Hotspur\t83\nJ. Wilshere\tWest Ham United\t82\nWillian\tArsenal\t82\nH. Winks\tTottenham Hotspur\t82\nJ. Ward-Prowse\tSouthampton\t82\nRodri\tManchester City\t82\nJ. Grealish\tAston Villa\t82\nR. Zobnin\tSpartak Moscow\t82\nFabinho\tLiverpool\t82\nAndré Gomes\tEverton\t82\nA. Yarmolenko\tWest Ham United\t82\nDaniel Podence\tWolverhampton Wanderers\t82\nJ. Seri\tFulham\t82\nC. Ünder\tLeicester City\t82\nO. Zinchenko\tManchester City\t82\nX. Shaqiri\tLiverpool\t82\nRodrigo\tLeeds United\t82\nRúben Neves\tWolverhampton Wanderers\t82\nRicardo Pereira\tLeicester City\t82\nP. Aubameyang\tArsenal\t82\nFernandinho\tManchester City\t82\nM. Mount\tChelsea\t82\nA. Robertson\tLiverpool\t82\nM. Lemina\tFulham\t81\nC. McGregor\tCeltic\t81\nM. Lanzini\tWest Ham United\t81\nV. Moses\tChelsea\t81\nA. Iwobi\tEverton\t81\nV. Tsygankov\tDynamo Kyiv\t81\nIsmaily\tShakhtar Donetsk\t81\nB. Chilwell\tChelsea\t81\nO. Giroud\tChelsea\t81\nReguilón\tTottenham Hotspur\t81\nN. Pépé\tArsenal\t81\nJ. Vardy\tLeicester City\t81\nR. Loftus-Cheek\tChelsea\t81\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://192.168.206.129:4040/jobs/job?id=252",
+              "$$hashKey": "object:13500"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1686644977777_736361067",
+      "id": "paragraph_1665498205288_1847163281",
+      "dateCreated": "2023-06-13T01:29:37-0700",
+      "dateStarted": "2023-06-14T02:31:15-0700",
+      "dateFinished": "2023-06-14T02:31:15-0700",
+      "status": "FINISHED",
+      "$$hashKey": "object:9992"
+    },
+    {
+      "text": "%sql\n",
+      "user": "anonymous",
+      "dateUpdated": "2023-06-14T02:29:31-0700",
+      "progress": 0,
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1686734971564_1622025542",
+      "id": "paragraph_1686734971564_1622025542",
+      "dateCreated": "2023-06-14T02:29:31-0700",
+      "status": "READY",
+      "$$hashKey": "object:9993"
+    }
+  ],
+  "name": "fifaEDA",
+  "id": "2J51YB1WT",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.0",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false,
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {},
+  "path": "/fifaEDA"
+}
