@@ -1,4 +1,6 @@
-# 7- Zeppelin Installation
+# EDA on FIFA using Apache Spark
+
+Exploratory Data Analysis on FIFA Dataset Using Spark Scala APIs in Apache Zeppelin Notebook.
 
 ## Download Zeppelin
 
